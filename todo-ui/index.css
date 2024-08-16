@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: "Clash Grotesk", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root {
+    --oxford-blue-light: rgb(13, 32, 62);
+    --oxford-blue: #0c1b33ff;
+    --coquelicot: rgb(176, 49, 14);
+    --white-smoke: #f2f2f2ff;
+    --dim-gray-light: rgb(143, 139, 139);
+    --dim-gray-dark: rgb(47, 47, 47);
+    --dim-gray: #737373ff;
+    --night: #0d0d0dff;
+}
+
+html {
+    background-color: var(--night);
+    color: var(--white-smoke);
+}
+
+body {
+    width: 100dvw;
+    min-height: 100dvh;
+    overflow-x: hidden;
+}
+
+main {
+    max-width: 75%;
+    margin-inline: auto;
+
+    padding-block: 4rem 2.5rem;
+    padding-inline: 2rem;
+    position: relative;
+}
+
+header {
+    position: sticky;
+    inset: 0 0 auto;
+    display: grid;
+    gap: 1.5rem;
+    padding-block-end: 2rem;
+    border-block-end: 2px solid var(--white-smoke);
+    background-color: var(--night);
+    z-index: 2;
+
+    & h1 {
+        font-size: 4rem;
+    }
+
+    & form {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        gap: 1rem;
+
+        & input,
+        button {
+            font-size: 1.25rem;
+            padding-block: .75rem;
+            border-radius: 8px;
+            border: none;
+        }
+
+        & input {
+            padding-inline-start: 1rem;
+            opacity: .8;
+
+            &:focus {
+                outline: none;
+                opacity: 1;
+            }
+        }
+
+        & button {
+            font-weight: bold;
+            background-color: var(--oxford-blue);
+            color: var(--white-smoke);
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+            &:hover {
+                background-color: var(--oxford-blue-light);
+            }
+        }
+    }
+}
+
+section.todos {
+    margin-block-start: 2rem;
+    display: grid;
+    gap: 1rem;
+    transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    & .todo {
+        background-color: var(--dim-gray);
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: .5rem 1rem .5rem 1.25rem;
+        font-size: 1.25rem;
+
+        &.complete {
+            background-color: var(--dim-gray-dark);
+            /* opacity: .65; */
+            text-decoration: line-through;
+
+            & span {
+                opacity: .5;
+                cursor: default;
+            }
+        }
+
+        &>div {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+        }
+
+        & input[type="checkbox"] {
+            appearance: none;
+            background-color: transparent;
+            margin: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            border: 2px solid var(--night);
+            border-radius: 100%;
+
+            display: grid;
+            place-content: center;
+            transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+            &::before {
+                content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%23000000' viewBox='0 0 256 256'%3E%3Cpath d='M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z'%3E%3C/path%3E%3C/svg%3E");
+                transform: scale(0);
+                transition: all .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+
+            &:checked {
+                &::before {
+                    transform: scale(1);
+                }
+            }
+        }
+
+        & span {
+            padding: 2px;
+            border-radius: 4px;
+            transition: all .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+            &[contenteditable] {
+                &:hover {
+                    background-color: var(--dim-gray-light);
+                }
+            }
+
+            &:focus {
+                outline: none;
+                background-color: var(--dim-gray-light);
+            }
+        }
+
+        & button {
+            border: none;
+            padding: .25rem;
+            display: grid;
+            place-content: center;
+            background-color: transparent;
+
+            & svg {
+                transition: all .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+
+            &.save:hover {
+                & svg {
+                    fill: var(--oxford-blue-light);
+                }
+            }
+
+            &.delete:hover {
+                & svg {
+                    fill: var(--coquelicot);
+                }
+            }
+        }
+    }
+}

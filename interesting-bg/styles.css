@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Clash Grotesk Variable', sans-serif;
+}
+
+.blocks-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* inset: 0; */
+    overflow: hidden;
+
+    /* #blocks {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 50px);
+        grid-auto-rows: 50px;
+        width: 100vw;
+        height: 100vh;
+    } */
+
+    #blocks {
+        background-color: #131313;
+        /* width: 105vw;
+        height: 100vh;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start; */
+        overflow: hidden;
+        z-index: 10000;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 30px);
+        grid-auto-rows: 30px;
+        width: 102vw;
+        height: 104vh;
+
+        .block {
+            width: 30px;
+            height: 30px;
+            border: .5px solid rgba(255, 255, 255, 0.075);
+            transition: border-color .3s ease;
+        }
+
+        .highlight {
+            border-color: #EBFB1B;
+        }
+    }
+}
+
+main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 2em;
+    z-index: 2;
+    pointer-events: none;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    padding: 2.5em;
+    display: flex;
+    justify-content: space-between;
+    color: #FCFBC6;
+    text-transform: uppercase;
+    font-size: 14px;
+
+    ul {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+    }
+}
+
+.gallery {
+    width: 65%;
+    margin: 10em auto;
+    display: flex;
+    gap: 10em;
+
+    .col {
+        flex: 1;
+
+        &:nth-child(2) {
+            margin-top: 15em;
+        }
+
+        .img {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #C5B6AF;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 10px;
+            margin-bottom: 10em;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}
